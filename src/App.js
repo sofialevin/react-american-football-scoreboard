@@ -9,6 +9,8 @@ function App() {
   let [lionsScore, setLionsScore] = useState(0);
   let [tigersScore, setTigersScore] = useState(0);
 
+  let [quarter, setQuarter] = useState(1);
+
   return (
     <div className="container">
       <section className="scoreboard">
@@ -26,7 +28,7 @@ function App() {
             <div className="away__score">{tigersScore}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter={quarter}/>
       </section>
       <section className="buttons">
         <div className="homeButtons">
@@ -37,6 +39,15 @@ function App() {
         <div className="awayButtons">
           <button className="awayButtons__touchdown" onClick={()=> setTigersScore(tigersScore += 7)}>Away Touchdown</button>
           <button className="awayButtons__fieldGoal" onClick={()=> setTigersScore(tigersScore += 3)}>Away Field Goal</button>
+        </div>
+        <div>
+          <p>Quarter:</p>
+          <select value={quarter} onChange={(event) => setQuarter(event.target.value)}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
         </div>
       </section>
     </div>
